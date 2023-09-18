@@ -16,7 +16,7 @@ export default function Profile(){
     
     return(
         <Flex className="profile" bg={''} h={"100vh"} w={'100%'} align={'center'} justify={'center'}>
-            <Image rounded={'5px'} h={'90vh'} src="CV2.png"></Image>
+            <Image _hover={{ transform: "scale(1.1)", transition: "transform 0.3s ease-in-out" }} rounded={'5px'} h={'90vh'} src="CV2.png"></Image>
         </Flex>
     )
 }

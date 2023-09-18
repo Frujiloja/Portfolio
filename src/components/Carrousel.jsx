@@ -39,7 +39,6 @@ export default function CaptionCarousel() {
 
   const cards = [
     {
-      id: 1,
       title: "Wonder Toys",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: "wonder.jpg",
@@ -49,9 +48,9 @@ export default function CaptionCarousel() {
       title: "Pokemon",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: "pokemon3.jpg",
+      link: "",
     },
     {
-      id: 2,
       title: "Strings & Keys",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: "strings.jpg",
@@ -61,18 +60,20 @@ export default function CaptionCarousel() {
       title: "Rick & Morty",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: "rick.jpg",
+      link: "",
     },
     {
       title: "SneakersCo",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: "snickers.jpg",
+      link: "",
     },
   ];
 
   return (
     <Box
       position={"relative"}
-      height={"70vh"}
+      height={"60vh"}
       width={"full"}
       overflow={"hidden"}
       rounded={"5px"}
@@ -120,49 +121,55 @@ export default function CaptionCarousel() {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Box
-            key={index}
-            position="relative"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`url(${card.image})`}
-          >
-            <Container size="container.lg" height="600px" position="relative">
-              <Stack
-                spacing={6}
-                w={"full"}
-                maxW={"lg"}
-                position="absolute"
-                top="50%"
-                transform="translate(0, -50%)"
+            <Box
+              key={index}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="contain"
+              backgroundImage={`url(${card.image})`}
+            >
+              <Container
+                size="container.lg"
+                height="70vh"
+                w={"60vh"}
+                position="relative"
+                bg={""}
               >
-                <Flex
-                  justifyContent={"space-between"}
-                  align={"center"}
-                  justify={"center"}
+                <Stack
+                  spacing={"3vh"}
+                  w={"70vh"}
+                  maxW={"lg"}
+                  position="absolute"
+                  top="50%"
+                  transform="translate(0, -50%)"
+                  bg={""}
                 >
-                  <Heading color="white" fontSize={"5vh"}>
-                    {card.title}
-                  </Heading>
-                  {card.link ? (
-                    <Text
-                      fontWeight={"bold"}
-                      cursor={"pointer"}
-                      color={"#29bfd6"}
-                    >
-                      <Link to={card.link} target="blank">
-                        Visit
-                      </Link>
-                    </Text>
-                  ) : null}
-                </Flex>
-                <Text fontSize={"2vh"} color="white">
-                  {card.text}
-                </Text>
-              </Stack>
-            </Container>
-          </Box>
+                  <Flex
+                    justifyContent={"space-between"}
+                    align={"center"}
+                    justify={"center"}
+                    w={"55vh"}
+                  >
+                    <Heading color="white" fontSize={"4vh"}>
+                      {card.title}
+                    </Heading>
+                    {/* <Link to={card.link}  target="_blank" >
+                        <Text
+                          color={"#29bfd6"}
+                          fontWeight={"bold"}
+                          fontSize={"2vh"}
+                        >
+                          Visit
+                        </Text>
+                    </Link> */}
+                  </Flex>
+                  <Text fontSize={"1.5vh"} color="white" w={"50vh"}>
+                    {card.text}
+                  </Text>
+                </Stack>
+              </Container>
+            </Box>
         ))}
       </Slider>
     </Box>
