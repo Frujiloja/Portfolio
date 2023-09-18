@@ -13,9 +13,13 @@ import Profile from "../components/Profile";
 import React, { useState, useEffect } from "react";
 import ScrollReveal from "scrollreveal";
 import TopRight from "../components/TopRight";
-import { FaBriefcase, FaPortrait, FaUserAstronaut } from "react-icons/fa";
-
-
+import {
+  FaBriefcase,
+  FaPortrait,
+  FaUserAstronaut,
+  FaMailBulk,
+} from "react-icons/fa";
+import Contact from "../components/Contact";
 
 export default function Home() {
   const [adminView, setAdminView] = useState("About");
@@ -39,7 +43,9 @@ export default function Home() {
   const handleCV = () => {
     setAdminView("Profile");
   };
-
+  const handleContact = () => {
+    setAdminView("Contact");
+  };
 
   function NavBar() {
     return (
@@ -75,10 +81,10 @@ export default function Home() {
             justifyContent={"center"}
           >
             {" "}
-            <FaUserAstronaut size={'2.5vh'}></FaUserAstronaut>
+            <FaUserAstronaut size={"2.5vh"}></FaUserAstronaut>
             <Heading
-            ml={'1vh'}
-            fontSize={"2.5vh"}
+              ml={"1vh"}
+              fontSize={"2.5vh"}
               cursor={"pointer"}
               color={adminView === "About" ? "black" : "white"}
               _hover={
@@ -101,9 +107,9 @@ export default function Home() {
             justifyContent={"center"}
           >
             {" "}
-            <FaBriefcase size={'2.5vh'}></FaBriefcase>
+            <FaBriefcase size={"2.5vh"}></FaBriefcase>
             <Heading
-            ml={'1vh'}
+              ml={"1vh"}
               fontSize={"2.5vh"}
               cursor={"pointer"}
               color={adminView === "Projects" ? "black" : "white"}
@@ -123,13 +129,14 @@ export default function Home() {
             h={"25%"}
             display={"flex"}
             alignItems={"center"}
+            borderBottom={"1px solid #29bfd6"}
             justifyContent={"center"}
           >
             {" "}
-            <FaPortrait size={'2.5vh'}></FaPortrait>
+            <FaPortrait size={"2.5vh"}></FaPortrait>
             <Heading
-            ml={'1vh'}
-            fontSize={"2.5vh"}
+              ml={"1vh"}
+              fontSize={"2.5vh"}
               cursor={"pointer"}
               color={adminView === "Profile" ? "black" : "white"}
               _hover={
@@ -142,13 +149,43 @@ export default function Home() {
               Profile
             </Heading>
           </Box>
+          <Box
+            bg={adminView === "Contact" ? "#29bfd6" : ""}
+            w={"100%"}
+            h={"25%"}
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            {" "}
+            <FaMailBulk size={"2.5vh"}></FaMailBulk>
+            <Heading
+              ml={"1vh"}
+              fontSize={"2.5vh"}
+              cursor={"pointer"}
+              color={adminView === "Contact" ? "black" : "white"}
+              _hover={
+                adminView === "Contact"
+                  ? "black"
+                  : { color: "#29bfd6", transition: "color 0.3s ease-in-out" }
+              }
+              onClick={handleContact}
+            >
+              Contact
+            </Heading>
+          </Box>
         </Flex>
       </Box>
     );
   }
 
   return (
-    <Box h={"100vh"} backgroundImage={'bg.jpg'} backgroundSize={'cover'} w={"100%"}>
+    <Box
+      h={"100vh"}
+      backgroundImage={"bg.jpg"}
+      backgroundSize={"cover"}
+      w={"100%"}
+    >
       <Box w={"100%"}>
         <Flex align={"center"} bg={""}>
           <NavBar />
@@ -156,7 +193,6 @@ export default function Home() {
             h={"100vh"}
             align={"center"}
             justify={"center"}
-            justifyContent={"space-between"}
             direction={"column"}
             bg={""}
             w={"90%"}
@@ -165,15 +201,13 @@ export default function Home() {
               <About></About>
             ) : adminView === "Projects" ? (
               <Projects></Projects>
+            ) : adminView === "Contact" ? (
+              <Contact></Contact>
             ) : (
               <Profile></Profile>
             )}
           </Flex>
-          <Box
-            position="absolute"
-            top="0"
-            right="0"
-          >
+          <Box position="absolute" top="0" right="0">
             <TopRight></TopRight>
           </Box>
         </Flex>

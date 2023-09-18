@@ -15,7 +15,7 @@ export default function Profile(){
       }, []);
     
     return(
-        <Flex bg={''} h={"100vh"} w={'100%'} align={'center'} justify={'center'}>
+        <Flex className="profile" bg={''} h={"100vh"} w={'100%'} align={'center'} justify={'center'}>
             <Image rounded={'5px'} h={'90vh'} src="CV2.png"></Image>
         </Flex>
     )
