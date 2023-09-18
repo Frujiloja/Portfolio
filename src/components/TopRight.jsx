@@ -11,7 +11,6 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import ScrollReveal from "scrollreveal";
 import { Link } from "react-router-dom";
-import MusicPlayer from "../components/MusicPlayer";
 
 
 export default function TopRight() {
@@ -29,19 +28,9 @@ export default function TopRight() {
 
   return (
     <Flex className="top" p={"1vh"} pr={"3vh"} align={"center"}>
-      {/* <Button
-        p={0}
-        m={0}
-        onClick={toggleColorMode}
-        bg={"transparent"}
-        _hover={"none"}
-      >
-        {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-      </Button>
-      <Text ml={"1vh"} mr={"2vh"}>
-        EN/SP
-      </Text> */}
-      {/* <MusicPlayer ></MusicPlayer> */}
+      <Text color={'white'} ml={"1vh"} mr={"2vh"}>
+        EN/ESP
+      </Text>
       <Box w={"2vh"}></Box>
       <Link  to={"https://www.linkedin.com/in/martin-fuks-251b91141/"} target="blank">
         {" "}
