@@ -149,7 +149,7 @@ export default function Home() {
               Profile
             </Heading>
           </Box>
-          <Box
+          {/* <Box
             bg={adminView === "Contact" ? "#29bfd6" : ""}
             w={"100%"}
             h={"25%"}
@@ -173,7 +173,7 @@ export default function Home() {
             >
               Contact
             </Heading>
-          </Box>
+          </Box> */}
         </Flex>
       </Box>
     );

@@ -28,9 +28,9 @@ export default function TopRight() {
 
   return (
     <Flex className="top" p={"1vh"} pr={"3vh"} align={"center"}>
-      <Text color={'white'} ml={"1vh"} mr={"2vh"}>
+      {/* <Text color={'white'} ml={"1vh"} mr={"2vh"}>
         EN/ESP
-      </Text>
+      </Text> */}
       <Box w={"2vh"}></Box>
       <Link  to={"https://www.linkedin.com/in/martin-fuks-251b91141/"} target="blank">
         {" "}
