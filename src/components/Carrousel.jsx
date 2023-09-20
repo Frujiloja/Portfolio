@@ -34,37 +34,49 @@ const settings = {
 export default function CaptionCarousel() {
   const [slider, setSlider] = React.useState(null);
 
+  const language = localStorage.getItem("language");
+
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
 
   const cards = [
     {
       title: "Wonder Toys",
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      text: "Wonder Toys is an e-commerce store specializing in toys, offering a wide range of options for children of all ages.",
+      text2:
+        "Wonder Toys es un ecommerce especializado en juguetes, ofreciendo una amplia gama de opciones para niños de todas las edades.",
       image: "wonder.jpg",
       link: "https://wondertoys.up.railway.app/",
     },
     {
       title: "Pokemon",
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      text: "PokeAPI is a website for a Pokémon API that provides detailed information about Pokémon, including data about various species, moves, abilities, and more.",
+      text2:
+        "PokeAPI es un sitio web de una API que proporciona información detallada sobre Pokémon, incluyendo datos sobre diferentes especies, movimientos, habilidades y más.",
       image: "pokemon3.jpg",
       link: "",
     },
     {
       title: "Strings & Keys",
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      text: "Strings & Keys is an e-commerce store specializing in musical instruments, offering a wide range of options for musicians of all skill levels.",
+      text2:
+        "Strings & Keys es unecommerce especializado en instrumentos musicales, que ofrece una amplia variedad de opciones para músicos de todos los niveles de habilidad.",
       image: "strings.jpg",
       link: "https://stringsandkeys.up.railway.app/",
     },
     {
       title: "Rick & Morty",
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      text: "The Rick and Morty API page is an online portal that provides access to data and information related to the popular TV series Rick and Morty.",
+      text2:
+        "La página de la API de Rick and Morty es un portal en línea que proporciona acceso a datos e información relacionada con la popular serie de televisión Rick and Morty.",
       image: "rick.jpg",
       link: "",
     },
     {
       title: "SneakersCo",
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      text: "SneakersCo is an e-commerce platform dedicated to sneakers, providing a wide selection of footwear for all ages.",
+      text2:
+        "SneakersCo es un ecommerce especializado en zapatillas, que ofrece una amplia selección de calzado para todas las edades.",
       image: "snickers.jpg",
       link: "",
     },
@@ -121,40 +133,40 @@ export default function CaptionCarousel() {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-            <Box
-              key={index}
+          <Box
+            key={index}
+            position="relative"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="contain"
+            backgroundImage={`url(${card.image})`}
+          >
+            <Container
+              size="container.lg"
+              height="70vh"
+              w={"60vh"}
               position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="contain"
-              backgroundImage={`url(${card.image})`}
+              bg={""}
             >
-              <Container
-                size="container.lg"
-                height="70vh"
-                w={"60vh"}
-                position="relative"
+              <Stack
+                spacing={"3vh"}
+                w={"70vh"}
+                maxW={"lg"}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)"
                 bg={""}
               >
-                <Stack
-                  spacing={"3vh"}
-                  w={"70vh"}
-                  maxW={"lg"}
-                  position="absolute"
-                  top="50%"
-                  transform="translate(0, -50%)"
-                  bg={""}
+                <Flex
+                  justifyContent={"space-between"}
+                  align={"center"}
+                  justify={"center"}
+                  w={"55vh"}
                 >
-                  <Flex
-                    justifyContent={"space-between"}
-                    align={"center"}
-                    justify={"center"}
-                    w={"55vh"}
-                  >
-                    <Heading color="white" fontSize={"4vh"}>
-                      {card.title}
-                    </Heading>
-                    {/* <Link to={card.link}  target="_blank" >
+                  <Heading color="white" fontSize={"4vh"}>
+                    {card.title}
+                  </Heading>
+                  {/* <Link to={card.link}  target="_blank" >
                         <Text
                           color={"#29bfd6"}
                           fontWeight={"bold"}
@@ -163,13 +175,19 @@ export default function CaptionCarousel() {
                           Visit
                         </Text>
                     </Link> */}
-                  </Flex>
+                </Flex>
+                {language === "spanish" ? (
+                  <Text fontSize={"1.5vh"} color="white" w={"50vh"}>
+                    {card.text2}
+                  </Text>
+                ) : (
                   <Text fontSize={"1.5vh"} color="white" w={"50vh"}>
                     {card.text}
                   </Text>
-                </Stack>
-              </Container>
-            </Box>
+                )}
+              </Stack>
+            </Container>
+          </Box>
         ))}
       </Slider>
     </Box>

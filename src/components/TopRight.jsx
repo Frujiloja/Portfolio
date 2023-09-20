@@ -12,9 +12,19 @@ import React, { useState, useEffect } from "react";
 import ScrollReveal from "scrollreveal";
 import { Link } from "react-router-dom";
 
-
 export default function TopRight() {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const language = localStorage.getItem("language");
+
+  const languageChange = () => {
+    if (language === "spanish") {
+      localStorage.setItem("language", "english");
+    } else {
+      localStorage.setItem("language", "spanish");
+    }
+    window.location.reload();
+  };
 
   useEffect(() => {
     const sr = ScrollReveal({
@@ -28,17 +38,38 @@ export default function TopRight() {
 
   return (
     <Flex className="top" p={"1vh"} pr={"3vh"} align={"center"}>
-      {/* <Text color={'white'} ml={"1vh"} mr={"2vh"}>
-        EN/ESP
-      </Text> */}
+      {language === "spanish" ? (
+        <Text
+          cursor={"pointer"}
+          onClick={languageChange}
+          color={"white"}
+          ml={"1vh"}
+          mr={"2vh"}
+        >
+          EN / <span style={{ color: "#29bfd6", fontWeight: "bold" }}>ESP</span>
+        </Text>
+      ) : (
+        <Text
+          cursor={"pointer"}
+          onClick={languageChange}
+          color={"white"}
+          ml={"1vh"}
+          mr={"2vh"}
+        >
+          <span style={{ color: "#29bfd6", fontWeight: "bold" }}>EN</span> / ESP
+        </Text>
+      )}
       <Box w={"2vh"}></Box>
-      <Link  to={"https://www.linkedin.com/in/martin-fuks-251b91141/"} target="blank">
+      <Link
+        to={"https://www.linkedin.com/in/martin-fuks-251b91141/"}
+        target="blank"
+      >
         {" "}
         <FaLinkedinIn color="white" size={"3vh"}></FaLinkedinIn>
       </Link>
       <Box w={"2vh"}></Box>
-      <Link to={'https://github.com/Frujiloja'} target="blank">
-      <FaGithub color="white" size={"3vh"}></FaGithub>
+      <Link to={"https://github.com/Frujiloja"} target="blank">
+        <FaGithub color="white" size={"3vh"}></FaGithub>
       </Link>
     </Flex>
   );

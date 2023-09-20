@@ -47,6 +47,9 @@ export default function Home() {
     setAdminView("Contact");
   };
 
+  
+  const language = localStorage.getItem('language');
+
   function NavBar() {
     return (
       <Box
@@ -94,7 +97,7 @@ export default function Home() {
               }
               onClick={handleAbout}
             >
-              About Me
+              {language === "spanish" ? ('Quien Soy'):('About Me') }
             </Heading>
           </Box>
           <Box
@@ -120,7 +123,7 @@ export default function Home() {
               }
               onClick={handleProjects}
             >
-              Projects
+              {language === "spanish" ? ('Proyectos'):('Projects') }
             </Heading>
           </Box>
           <Box
@@ -146,7 +149,7 @@ export default function Home() {
               }
               onClick={handleCV}
             >
-              Profile
+              {language === "spanish" ? ('Perfil'):('Profile') }
             </Heading>
           </Box>
           {/* <Box
